@@ -1,0 +1,679 @@
+/* Global Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 122.5rem;
+    margin: 0 auto;
+    padding: 0 2.4rem;
+}
+
+.container-fluid {
+    width: 100%;
+    max-width: 150rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 9rem;
+    z-index: 1;
+    background-color: rgba(9, 9, 9, 0.8);
+}
+
+.logo {
+    cursor: pointer;
+    z-index: 50;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+.open .nav::before {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.nav__button {
+    background-color: #fff;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 2000;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+}
+
+.nav__icon {
+    position: relative;
+    margin-top: 2.5rem;
+}
+
+.nav__icon,
+.nav__icon::before,
+.nav__icon::after {
+    width: 2.5rem;
+    height: 2px;
+    background-color: #333;
+    display: inline-block;
+}
+
+.nav__icon::before,
+.nav__icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all 0.2s;
+}
+
+.nav__icon::before {
+    top: -0.7rem;
+}
+
+.nav__icon::after {
+    top: 0.7rem;
+}
+
+.open .nav__icon {
+    background-color: transparent;
+}
+
+.open .nav__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+}
+
+.open .nav__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+}
+
+.nav-list {
+    list-style: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100vh;
+    background-color: #252525;
+    padding: 4.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+}
+
+.open .nav-list {
+    transform: translateX(0);
+}
+
+.nav-item {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-link {
+    display: block;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    margin-right: -2px;
+    transition: color 0.5s;
+}
+
+.nav-link:hover {
+    color: #c59d5f;
+}
+
+.icons {
+    list-style: none;
+    font-size: 2rem;
+    color: #fff;
+    display: flex;
+    margin-right: 8rem;
+    z-index: 50;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.icon:not(:last-child) {
+    margin-right: 1rem;
+}
+
+/* Hero */
+.hero {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("img/hero.jpg") center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.quality {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #e2e2d9;
+    margin-top: -2rem;
+}
+
+.title {
+    font-size: 12rem;
+    font-family: "Cormorant Garamond";
+    color: #fff;
+}
+
+.go-top {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #333;
+    border-radius: 50%;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Offers */
+.offers {
+    width: 100%;
+    background-color: #f9f9f9;
+    padding-bottom: 10rem;
+}
+
+.offers h3 {
+    margin-bottom: 5rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 4rem;
+    font-family: "Cormorant Garamond";
+    padding-top: 5rem;
+}
+
+.section-subtitle {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    color: #afafaf;
+    font-weight: 300;
+    position: relative;
+}
+
+.three-columns-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 3rem;
+    font-weight: 400;
+    font-family: "Cormorant Garamond";
+}
+
+.paragraph {
+    margin-top: 2rem;
+    font-size: 1.6rem;
+    color: #afafaf;
+}
+
+/* About Us */
+.two-columns-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.tart,
+.fruits {
+    width: 70%;
+}
+
+.top-tart {
+    text-align: center;
+}
+
+.top-fruits {
+    text-align: center;
+}
+
+.about-us,
+.read-more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.welcome {
+    font-weight: 100;
+}
+
+.about-paragraph {
+    font-size: 1.4rem;
+    color: #afafaf;
+    line-height: 1.5;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+    z-index: 1;
+    margin-bottom: 4rem;
+}
+
+.btn:hover {
+    color: #c59d5f;
+}
+
+.third-grid {
+    margin-top: 10rem;
+}
+
+/* Team */
+.team {
+    width: 100%;
+    margin-top: 10rem;
+    background-color: #f9f9f9;
+    padding-bottom: 10rem;
+}
+
+.four-columns-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5rem;
+    margin-top: 10rem;
+}
+
+.name {
+    font-family: "Cormorant Garamond";
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+.position {
+    text-align: center;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 100;
+    color: #afafaf;
+}
+
+.description-paragraph {
+    margin-top: 1.5rem;
+    font-size: 1.6rem;
+    color: #afafaf;
+    text-align: center;
+    padding-bottom: 5rem;
+}
+
+/* Menu */
+.menu {
+    height: 100vh;
+}
+
+.menu-header {
+    height: 50vh;
+    width: 100%;
+    background: url("img/group-of-people-making-toast.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.menu-card {
+    background-color: #fff;
+    width: 80%;
+    margin: -30rem auto;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding-bottom: 5rem;
+}
+
+.menu-card-header {
+    text-align: center;
+}
+
+.fish {
+    margin-top: 5rem;
+}
+
+.menu-title {
+    color: #333;
+    margin-top: -4rem;
+    margin-bottom: 1rem;
+}
+
+.starters h2,
+.mains h2 {
+    color: #ff7417;
+    text-align: center;
+    font-family: "Cormorant Garamond";
+    font-size: 30px;
+    margin-top: 5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.starter-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px dashed #afafaf;
+    margin-bottom: 1.5rem;
+}
+
+.starter-header h3 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-right: 2rem;
+}
+
+.starter-header h4 {
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+.menu-paragraph {
+    font-size: 1.5rem;
+    color: #afafaf;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Customers */
+.carousel div {
+    margin: 0 auto;
+    width: 600px;
+}
+
+.carousel img {
+    margin: 0 auto;
+}
+
+.slick-prev::before,
+.slick-next::before {
+    color: #bc9321 !important;
+    font-size: 3rem;
+}
+
+.slick-prev {
+    margin-left: 10rem;
+}
+
+.slick-next {
+    margin-right: 10rem;
+}
+
+.customers {
+    padding-bottom: 20rem;
+}
+
+.customers h3 {
+    margin-bottom: 3rem;
+}
+
+.glide {
+    text-align: center;
+}
+
+.glide__arrow {
+    color: #000;
+}
+
+.testimonial-paragraph {
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: #afafaf;
+    margin: 0 auto;
+    margin-top: 3rem;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* Book */
+.book {
+    height: 80vh;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("img/vegetable-salad.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.book-card {
+    width: 80%;
+    background-color: #fff;
+    margin: 6rem auto;
+    border-radius: 10px;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+    padding-bottom: 5rem;
+}
+
+.book-card h3 {
+    margin-bottom: 5rem;
+}
+
+.form-group {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+input {
+    border: transparent;
+    border-bottom: 2px solid #ccc;
+    transition: all 0.8s;
+    width: 70%;
+}
+
+input:focus {
+    border-bottom: 2px solid #ff7417;
+    outline: none;
+}
+
+select {
+    border: transparent;
+    border-bottom: 2px solid #ccc;
+}
+
+select:focus {
+    outline: none;
+}
+
+.btn-book {
+    display: flex;
+    justify-content: center;
+    transform: translateY(5rem);
+    font-size: 1.4rem;
+}
+
+/* Footer */
+.footer {
+    height: 20vh;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright {
+    color: #afafaf;
+    font-size: 2rem;
+    text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+    .paragraph {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+
+    .tart {
+        max-height: 500px;
+        object-fit: contain;
+    }
+
+    .nav-list {
+        width: 80%;
+    }
+
+    .four-columns-grid {
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+    }
+
+    .three-columns-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .two-columns-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .customers {
+        padding-top: 25rem;
+    }
+
+    .footer {
+        margin-top: 30rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .customers {
+        padding-top: 30rem;
+    }
+
+    .slick-prev::before,
+    .slick-next::before {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .premium {
+        width: 200px;
+    }
+
+    .title {
+        font-size: 6rem;
+    }
+
+    .go-top {
+        right: 2rem;
+        bottom: 2rem;
+    }
+
+    .paragraph {
+        margin-bottom: 3rem;
+        margin-top: -3rem;
+    }
+
+    .four-columns-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .carousel div {
+        width: 350px;
+    }
+
+    .customers {
+        padding-top: 45rem;
+    }
+
+    .book-card {
+        width: 100%;
+    }
+
+    .book-title {
+        font-size: 2rem;
+    }
+
+    .book-card .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .three-columns-grid {
+        grid-gap: 0;
+    }
+
+    .footer {
+        margin-top: 40rem;
+    }
+
+    .copyright {
+        font-size: 1.2rem;
+    }
+}
